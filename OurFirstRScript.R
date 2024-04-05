@@ -188,12 +188,15 @@ y[,5:10] # from 5th to 10th column
 y[,"chip"] # by column name
 y[,c("chip","trap_id")] # by column name, more than a column
 
+y[1:5,c("chip","trap_id")]
+
 # selecting subsets of data, according to their values
 library(dplyr)
 library(tidyverse)
 filter(y, trap_id > 43)
 # or
-y %>% filter(trap_id > 43)
+y %>% 
+  filter(trap_id > 43)
 filter(y, trap_id > 43 & occasion < 20)
 filter(y, trap_id < 5 | trap_id > 65)
 arrange(y, trap_id)
