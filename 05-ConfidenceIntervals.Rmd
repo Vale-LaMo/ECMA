@@ -1,8 +1,10 @@
 ---
 title: "How to calculate confidence intervals"
 output:
-  word_document: default
   html_notebook: default
+  html_document:
+    df_print: paged
+  word_document: default
 ---
 
 Consider our snow vole case study... We will calculate the confidence intervals for the mean of the weight of the individuals, for the foot length, and for different groups. 
@@ -66,6 +68,22 @@ as.data.frame(CI(na.omit(dati$weight_g), ci=0.95)) -> CImean
 CImean
 ```
 
+Footlength CI:
+
+```{r}
+
+variabile <- dati2$footlength_mm # o qualsiasi altra variabile numerica
+
+# script 'generalizzato'
+intervalli <- group.CI(variabile ~ sex,
+         data= dati2,
+         ci=0.95)
+intervalli
+ggplot(intervalli, aes(x=sex, y=variabile.mean, colour=sex)) +
+    geom_errorbar(aes(ymin=variabile.lower, ymax=variabile.upper), width=.1) +
+    geom_line() +
+    geom_point()
+```
 
 
 # Calculating and plotting CIs with the bootstrapping method
@@ -91,6 +109,23 @@ Do it on your own:
 
 * Calculate the bootstrapped intervals for the sex groups
 * Plot the bootstrapped intervals
+
+
+```{r}
+library(tidyverse)
+dati2 %>%
+  filter(sex == "F") -> datiF
+dati2 %>%
+  filter(sex == "M") -> datiM
+
+dataset <- datiM
+
+boot.data <- boot(dataset$weight_g,
+                  function(x,i) mean(x[i]), 
+                  R=10000)
+boot.ci(boot.data,
+        conf = 0.95)
+```
 
 ## Optional readings:   
 

@@ -124,6 +124,8 @@ t.test(ind.w$individual.weight, mu = 30)
 length(na.omit(ind.w$individual.weight))
 ```
 
+# partire da qui per la lezione del 26 aprile
+# viste a lezione già le Slide5, rivedere slide sul chi-quadro e sulla statistica non parametrica!!
 
 
 # Two-sample t-test
