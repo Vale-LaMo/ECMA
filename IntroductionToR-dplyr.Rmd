@@ -24,7 +24,7 @@ I provided you a dataset called *captures.csv*. The data provide information on 
 
 ```{r}
 # Read captures.csv (name it 'captures')
-
+captures <- read.csv("data/captures.csv", sep=";")
 
 # Check the class of captures
 ?class
@@ -229,7 +229,7 @@ captures %>%
 # select columns from weight_g to footlenght_mm, excluding reproductive status
 captures %>% 
   select(weight_g:footlength_mm) %>% 
-  select(-repr_status)
+  dplyr::select(-repr_status)
 
 ```
 
@@ -243,7 +243,7 @@ For this purpose, in `dplyr` we couple two functions, `summarise()` and `group_b
 ```{r}
 captures %>% 
   group_by(sex) %>% 
-  summarise(mean(weight_g, na.rm=TRUE))
+  summarise(media_peso = mean(weight_g, na.rm=TRUE))
 ```
 
 ```{r}
@@ -320,7 +320,13 @@ See *?arrange* to order taking into account grouping (see example at the bottom 
 ```{r}
 # DO IT ON YOUR OWN
 ?arrange
+captures %>% 
+  group_by(sex) %>% 
+  arrange(desc(weight_g), .by_group = TRUE)
 
+# captures %>% 
+#   group_by(sex) %>% 
+#   arrange(desc(weight_g))
 
 ```
 

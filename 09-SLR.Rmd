@@ -7,6 +7,8 @@ output:
     toc_float: yes
 ---
 
+# per lezione, vedere slide sulla regressione e partire da qui
+
 We are going to use the dataset *cars* available in R.    
 
 ```{r data}

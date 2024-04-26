@@ -124,9 +124,6 @@ t.test(ind.w$individual.weight, mu = 30)
 length(na.omit(ind.w$individual.weight))
 ```
 
-# partire da qui per la lezione del 26 aprile
-# viste a lezione già le Slide5, rivedere slide sul chi-quadro e sulla statistica non parametrica!!
-
 
 # Two-sample t-test
 
@@ -153,6 +150,8 @@ ind.w %>%
 # We can see the difference in weight that we observe between males and females
 w.f <- (subset(ind.w, sex=="F"))$individual.weight
 w.m <- (subset(ind.w, sex=="M"))$individual.weight
+w.f
+w.m
 ```
 
 

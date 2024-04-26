@@ -26,22 +26,22 @@ chisq.test(freq, p = probs)
 yesbelt <- c(12813, 647, 359, 42)
 nobelt <- c(65963, 4000, 2642, 303)
 chisq.test(data.frame(yesbelt, nobelt))
-names(chisq.test(data.frame(yesbelt, nobelt)))
-data.frame(yesbelt, nobelt)
-rowSums(data.frame(yesbelt, nobelt))
-colSums(data.frame(yesbelt, nobelt))
-# for the first cell
-78776*13861/sum(data.frame(yesbelt, nobelt))
-# for the whole dataframe
-n = sum(data.frame(yesbelt, nobelt))
-data.frame(yesbelt, nobelt) %>% 
-  mutate(somma.riga = rowSums(data.frame(yesbelt, nobelt)),
-         e.yesbelt = somma.riga*sum(yesbelt)/n,
-         e.nobelt = somma.riga*sum(nobelt)/n)
-# compare with the values calculated by R
-chisq.test(data.frame(yesbelt, nobelt))$exp
-
-chisq.test(data.frame(yesbelt, nobelt))
+# names(chisq.test(data.frame(yesbelt, nobelt)))
+# data.frame(yesbelt, nobelt)
+# rowSums(data.frame(yesbelt, nobelt))
+# colSums(data.frame(yesbelt, nobelt))
+# # for the first cell
+# 78776*13861/sum(data.frame(yesbelt, nobelt))
+# # for the whole dataframe
+# n = sum(data.frame(yesbelt, nobelt))
+# data.frame(yesbelt, nobelt) %>% 
+#   mutate(somma.riga = rowSums(data.frame(yesbelt, nobelt)),
+#          e.yesbelt = somma.riga*sum(yesbelt)/n,
+#          e.nobelt = somma.riga*sum(nobelt)/n)
+# # compare with the values calculated by R
+# chisq.test(data.frame(yesbelt, nobelt))$exp
+# 
+# chisq.test(data.frame(yesbelt, nobelt))
 ```
 
 ```{r homogeneity-test}
