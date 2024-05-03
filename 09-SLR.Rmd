@@ -7,8 +7,6 @@ output:
     toc_float: yes
 ---
 
-# per lezione, vedere slide sulla regressione e partire da qui
-
 We are going to use the dataset *cars* available in R.    
 
 ```{r data}
@@ -77,7 +75,7 @@ Prediction at *x* values that are not necessarily part of the original data are 
 
 ```{r predictedvalues}
 
-predict(cars.lm, newdata = data.frame(speed = c(6,8,21)))
+predict(cars.lm, newdata = data.frame(speed = c(0,6,8,21)))
 plot(dist ~ speed, data = cars, pch = 16)
 abline(coef(cars.lm), col="red")
 points(cars$speed, fitted(cars.lm), col="red", pch=19)
@@ -109,7 +107,7 @@ summary(cars.lm)
 
 ```
 
-In the *Coefficients* section we find the parameter estimates and their respective standard errors in the second and fird columns. But we can also obtain the 95% confidence intervals:
+In the *Coefficients* section we find the parameter estimates and their respective standard errors in the second and first columns. But we can also obtain the 95% confidence intervals:
 
 ```{r coefconfidenceintervals}
 

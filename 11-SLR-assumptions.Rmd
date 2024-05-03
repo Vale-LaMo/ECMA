@@ -102,7 +102,7 @@ bptest(cars.lm)
 
 ```
 
-
+A **standardized residual** is the raw residuals divided by an overall standard deviation of the raw residuals.
 
 ## BoxCox transformation
 

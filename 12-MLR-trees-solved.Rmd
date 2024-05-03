@@ -100,7 +100,9 @@ Now, fit a quadratic model to the variable volume and girth. Display the results
 
 plot(Volume ~ Girth, data=trees)
 
-mod.q <- lm(Volume ~ Girth + I(Girth^2) + Height + I(Height^2), data=trees)
+mod.q <- lm(Volume ~ Girth + I(Girth^2) + 
+              Height + I(Height^2),
+            data=trees)
 summary(mod.q)
 # alternative code:
 mod.q <- lm(Volume ~ poly(Girth, 2, raw=TRUE) + poly(Height, 2, raw=TRUE), data=trees)
@@ -129,7 +131,7 @@ summary(mod.int)
 
 ```{r trees-regression2}
 
-mod <- lm(Volume ~ Girth + Height, data=trees)
+mod <- lm(Volume ~ Girth * Height, data=trees)
 plot(mod)
 plot(trees$Volume ~ trees$Girth)
 plot(trees$Volume ~ trees$Height)
