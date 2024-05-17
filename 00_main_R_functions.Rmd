@@ -1,0 +1,96 @@
+---
+title: "Principali funzioni per le analisi statistiche"
+output: html_notebook
+---
+
+
+# Funzioni per i grafici
+
+
+```{r}
+hist()
+boxplot()
+ggplot() +
+  geom_errorbar() +
+  geom_point() +
+  geom_line()
+
+par()
+plot()
+abline()
+```
+
+
+# Analisi esplorative dei dati
+
+Misure di tendenza centrale:
+```{r}
+mean()
+median()
+
+## the mode
+# R does not have a standard in-built function to calculate mode.
+# So we create a user function to calculate mode of a data set in R.
+# This function takes the vector as input and gives the mode value as output.
+# Create the function.
+getmode <- function(x) {
+  uniqv <- unique(x)
+  uniqv[which.max(tabulate(match(x, uniqv)))]
+}
+getmode()
+```
+
+Misure di dispersione:
+```{r}
+var()
+sd()
+min()
+max()
+range()
+quantile()
+
+```
+
+Altre:
+```{r}
+sum()
+sample()
+```
+
+
+# Intervalli di confidenza
+
+```{r}
+CI()
+group.CI()
+boot()
+boot.ci
+```
+
+
+
+
+# Analisi di correlazione
+
+```{r}
+cor()
+cor.test()
+ggcorrplot()
+
+vif() # applicato ad un modello di regressione
+```
+
+
+# Test d'ipotesi
+
+```{r}
+shapiro.test()
+qqnorm();qqline()
+t.test()
+
+var.test()
+
+```
+
+
+proseguire da file 07

@@ -30,7 +30,52 @@ data(cats)
 # Solution
 
 ```{r}
-
-
+head(cats)
+str(cats)
+plot(cats$Bwt, cats$Hwt)
+plot(cats$Hwt ~ cats$Bwt)
+plot(Hwt ~ Bwt, data = cats)
+plot(Bwt ~ Hwt, data = cats)
 ```
+```{r}
+cor(cats$Bwt, cats$Hwt)
+```
+
+```{r}
+cor.test(cats$Bwt, cats$Hwt)
+```
+
+```{r}
+cor.test(cats$Hwt, cats$Bwt)
+```
+
+```{r}
+mod <- lm(Hwt ~ Bwt, data=cats)
+summary(mod)
+```
+```{r}
+plot(cats$Bwt, cats$Hwt)
+abline(coef(mod), col="red")
+```
+
+```{r}
+par(mfrow=c(2,2))
+plot(mod)
+
+par(mfrow=c(1,4))
+plot(mod)
+
+par(mfrow=c(1,1))
+plot(mod)
+```
+
+
+
+
+
+
+
+
+
+
 

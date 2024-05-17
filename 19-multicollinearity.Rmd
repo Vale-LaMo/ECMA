@@ -59,6 +59,7 @@ We select the predictor variables:
 ```{r}
 pred <- dplyr::select(Boston, crim:lstat)
 names(pred)
+pred
 ```
 
 Now, we can compute a correlation matrix:
@@ -72,6 +73,7 @@ And we can visualize it:
 
 ```{r}
 ggcorrplot(cor.matrix)
+ggcorrplot(cor(pred))
 ```
 
 Just a different visualization:
@@ -134,6 +136,7 @@ Consider a dataset from air pollution studies. How is sulphur dioxide concentrat
 
 ```{r}
 pollution <- read.table("data/sulphur.dioxide.txt", header=TRUE)
+View(pollution)
 ```
 
 In multiple regression, it is always a good idea to use pairs to look at all the correlations:
