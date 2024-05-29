@@ -102,7 +102,7 @@ We can now fit our 'base model', i.e. the most complex model including all expla
 
 ```{r}
 
-fm1 <- glm(CattSiNo ~ Incl +
+fm1 <- glm(CattSiNo ~ Incl +  # BEYOND OPTIMAL MODEL
              Alt +
              copveg +
              # NSpecie +
@@ -135,12 +135,12 @@ Now, try to reduce the number of variables in the model - different models can b
 # UP TO YOU!!!
 
 fm1.noexp <- glm(CattSiNo ~ Incl +
-             Alt +
-             copveg +
+             Alt,
+             #copveg,
              # NSpecie +
              # media.rocce +
-             mediana.rocce, #+
-             #sd.rocce, #
+             #mediana.rocce,
+             # sd.rocce, #
              # Esp.tr,
            family=binomial, data=dati.mod.new)
 #, offset=Noccasioni)
@@ -226,7 +226,7 @@ plot(arrange(tab, Alt))
 
 ```{r}
 library(sjPlot)
-plot_model(fm2, type = "pred")
+plot_model(fm2, type = "eff", terms = c("Alt"))
 ```
 
 
@@ -239,7 +239,46 @@ https://sebastiansauer.github.io/convert_logit2prob/
 http://www.shizukalab.com/toolkits/plotting-logistic-regression-in-r
 
 
+```{r}
+fm2 <- glm(CattSiNo ~ Alt + I(Alt^2),
+           family=binomial, data=dati.mod.new)
+#, offset=Noccasioni)
+summary(fm2)
+
+# ok:
+fm2 <- glm(CattSiNo ~ Alt,
+           family=binomial, data=dati.mod.new)
+#, offset=Noccasioni)
+summary(fm2)
+
+# no:
+fm2 <- glm(CattSiNo ~ I(Alt^2),
+           family=binomial, data=dati.mod.new)
+#, offset=Noccasioni)
+summary(fm2)
+```
 
 
+```{r}
+fm2 <- glm(CattSiNo ~ Alt * media.rocce,
+           family=binomial, data=dati.mod.new)
+#, offset=Noccasioni)
+summary(fm2)
 
+# ok:
+fm2 <- glm(CattSiNo ~ Alt + media.rocce,
+           family=binomial, data=dati.mod.new)
+#, offset=Noccasioni)
+summary(fm2)
+fm2 <- glm(CattSiNo ~ Alt,
+           family=binomial, data=dati.mod.new)
+#, offset=Noccasioni)
+summary(fm2)
+
+# no:
+fm2 <- glm(CattSiNo ~ Alt + Alt:media.rocce,
+           family=binomial, data=dati.mod.new)
+#, offset=Noccasioni)
+summary(fm2)
+```
 
