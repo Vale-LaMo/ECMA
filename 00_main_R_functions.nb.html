@@ -1753,11 +1753,11 @@ statistiche</h1>
 
 
 <!-- rnb-text-begin -->
-<div id="funzioni-per-i-grafici" class="section level1">
-<h1>Funzioni per i grafici</h1>
+<div id="funzioni-generali-per-i-grafici" class="section level1">
+<h1>Funzioni generali per i grafici</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGlzdCgpXG5ib3hwbG90KClcbmdncGxvdCgpICtcbiAgZ2VvbV9lcnJvcmJhcigpICtcbiAgZ2VvbV9wb2ludCgpICtcbiAgZ2VvbV9saW5lKClcblxucGFyKClcbnBsb3QoKVxuYWJsaW5lKClcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGlzdCgpXG5ib3hwbG90KClcbmdncGxvdCgpICtcbiAgZ2VvbV9lcnJvcmJhcigpICtcbiAgZ2VvbV9wb2ludCgpICtcbiAgZ2VvbV9saW5lKClcblxucGFyKClcbnBsb3QoKVxuYWJsaW5lKClcbnBvaW50cygpXG5gYGAifQ== -->
 <pre class="r"><code>hist()
 boxplot()
 ggplot() +
@@ -1767,7 +1767,8 @@ ggplot() +
 
 par()
 plot()
-abline()</code></pre>
+abline()
+points()</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1797,14 +1798,13 @@ getmode()</code></pre>
 <p>Misure di dispersione:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmFyKClcbnNkKClcbm1pbigpXG5tYXgoKVxucmFuZ2UoKVxucXVhbnRpbGUoKVxuXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmFyKClcbnNkKClcbm1pbigpXG5tYXgoKVxucmFuZ2UoKVxucXVhbnRpbGUoKVxuYGBgIn0= -->
 <pre class="r"><code>var()
 sd()
 min()
 max()
 range()
-quantile()
-</code></pre>
+quantile()</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1822,11 +1822,14 @@ sample()</code></pre>
 <h1>Intervalli di confidenza</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQ0koKVxuZ3JvdXAuQ0koKVxuYm9vdCgpXG5ib290LmNpXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQ0koKVxuZ3JvdXAuQ0koKVxuYm9vdCgpXG5ib290LmNpXG5cbmNvbmZpbnQoKVxuY2kucGxvdCgpXG5gYGAifQ== -->
 <pre class="r"><code>CI()
 group.CI()
 boot()
-boot.ci</code></pre>
+boot.ci
+
+confint()
+ci.plot()</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1849,21 +1852,75 @@ vif() # applicato ad un modello di regressione</code></pre>
 <h1>Test d’ipotesi</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2hhcGlyby50ZXN0KClcbnFxbm9ybSgpO3FxbGluZSgpXG50LnRlc3QoKVxuXG52YXIudGVzdCgpXG5cbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2hhcGlyby50ZXN0KClcbnFxbm9ybSgpO3FxbGluZSgpXG50LnRlc3QoKVxuXG52YXIudGVzdCgpXG5gYGAifQ== -->
 <pre class="r"><code>shapiro.test()
 qqnorm();qqline()
 t.test()
 
-var.test()
-</code></pre>
+var.test()</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>proseguire da file 07</p>
+<p>Modelli di regressione:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG0oKVxuc3VtbWFyeSgpXG5nbG0oKVxuXG5wcmVkaWN0KClcbnJlbGV2ZWwoKVxuYm94Y294KClcbnBsb3RfbW9kZWwoKVxuYGBgIn0= -->
+<pre class="r"><code>lm()
+summary()
+glm()
+
+predict()
+relevel()
+boxcox()
+plot_model()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>ANOVA:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYW92KClcbmFub3ZhKClcbnN1bW1hcnkubG0oKVxuYGBgIn0= -->
+<pre class="r"><code>aov()
+anova()
+summary.lm()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Confronti multipli:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGFpcndpc2UudC50ZXN0KClcblR1a2V5SFNEKClcbmBgYCJ9 -->
+<pre class="r"><code>pairwise.t.test()
+TukeyHSD()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Interazioni:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW50ZXJhY3Rpb24ucGxvdCgpXG5jb3Bsb3QoKVxuYGBgIn0= -->
+<pre class="r"><code>interaction.plot()
+coplot()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="chi-quadro-e-statistica-non-parametrica" class="section level1">
+<h1>Chi-quadro e Statistica non parametrica</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2hpc3EudGVzdCgpXG53aWxjb3gudGVzdCgpXG5cbm9uZXdheS50ZXN0KClcbmBgYCJ9 -->
+<pre class="r"><code>chisq.test()
+wilcox.test()
+
+oneway.test()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlByaW5jaXBhbGkgZnVuemlvbmkgcGVyIGxlIGFuYWxpc2kgc3RhdGlzdGljaGUiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQoNCiMgRnVuemlvbmkgcGVyIGkgZ3JhZmljaQ0KDQoNCmBgYHtyfQ0KaGlzdCgpDQpib3hwbG90KCkNCmdncGxvdCgpICsNCiAgZ2VvbV9lcnJvcmJhcigpICsNCiAgZ2VvbV9wb2ludCgpICsNCiAgZ2VvbV9saW5lKCkNCg0KcGFyKCkNCnBsb3QoKQ0KYWJsaW5lKCkNCmBgYA0KDQoNCiMgQW5hbGlzaSBlc3Bsb3JhdGl2ZSBkZWkgZGF0aQ0KDQpNaXN1cmUgZGkgdGVuZGVuemEgY2VudHJhbGU6DQpgYGB7cn0NCm1lYW4oKQ0KbWVkaWFuKCkNCg0KIyMgdGhlIG1vZGUNCiMgUiBkb2VzIG5vdCBoYXZlIGEgc3RhbmRhcmQgaW4tYnVpbHQgZnVuY3Rpb24gdG8gY2FsY3VsYXRlIG1vZGUuDQojIFNvIHdlIGNyZWF0ZSBhIHVzZXIgZnVuY3Rpb24gdG8gY2FsY3VsYXRlIG1vZGUgb2YgYSBkYXRhIHNldCBpbiBSLg0KIyBUaGlzIGZ1bmN0aW9uIHRha2VzIHRoZSB2ZWN0b3IgYXMgaW5wdXQgYW5kIGdpdmVzIHRoZSBtb2RlIHZhbHVlIGFzIG91dHB1dC4NCiMgQ3JlYXRlIHRoZSBmdW5jdGlvbi4NCmdldG1vZGUgPC0gZnVuY3Rpb24oeCkgew0KICB1bmlxdiA8LSB1bmlxdWUoeCkNCiAgdW5pcXZbd2hpY2gubWF4KHRhYnVsYXRlKG1hdGNoKHgsIHVuaXF2KSkpXQ0KfQ0KZ2V0bW9kZSgpDQpgYGANCg0KTWlzdXJlIGRpIGRpc3BlcnNpb25lOg0KYGBge3J9DQp2YXIoKQ0Kc2QoKQ0KbWluKCkNCm1heCgpDQpyYW5nZSgpDQpxdWFudGlsZSgpDQoNCmBgYA0KDQpBbHRyZToNCmBgYHtyfQ0Kc3VtKCkNCnNhbXBsZSgpDQpgYGANCg0KDQojIEludGVydmFsbGkgZGkgY29uZmlkZW56YQ0KDQpgYGB7cn0NCkNJKCkNCmdyb3VwLkNJKCkNCmJvb3QoKQ0KYm9vdC5jaQ0KYGBgDQoNCg0KDQoNCiMgQW5hbGlzaSBkaSBjb3JyZWxhemlvbmUNCg0KYGBge3J9DQpjb3IoKQ0KY29yLnRlc3QoKQ0KZ2djb3JycGxvdCgpDQoNCnZpZigpICMgYXBwbGljYXRvIGFkIHVuIG1vZGVsbG8gZGkgcmVncmVzc2lvbmUNCmBgYA0KDQoNCiMgVGVzdCBkJ2lwb3Rlc2kNCg0KYGBge3J9DQpzaGFwaXJvLnRlc3QoKQ0KcXFub3JtKCk7cXFsaW5lKCkNCnQudGVzdCgpDQoNCnZhci50ZXN0KCkNCg0KYGBgDQoNCg0KcHJvc2VndWlyZSBkYSBmaWxlIDA3DQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlByaW5jaXBhbGkgZnVuemlvbmkgcGVyIGxlIGFuYWxpc2kgc3RhdGlzdGljaGUiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQoNCiMgRnVuemlvbmkgZ2VuZXJhbGkgcGVyIGkgZ3JhZmljaQ0KDQpgYGB7cn0NCmhpc3QoKQ0KYm94cGxvdCgpDQpnZ3Bsb3QoKSArDQogIGdlb21fZXJyb3JiYXIoKSArDQogIGdlb21fcG9pbnQoKSArDQogIGdlb21fbGluZSgpDQoNCnBhcigpDQpwbG90KCkNCmFibGluZSgpDQpwb2ludHMoKQ0KYGBgDQoNCg0KIyBBbmFsaXNpIGVzcGxvcmF0aXZlIGRlaSBkYXRpDQoNCk1pc3VyZSBkaSB0ZW5kZW56YSBjZW50cmFsZToNCmBgYHtyfQ0KbWVhbigpDQptZWRpYW4oKQ0KDQojIyB0aGUgbW9kZQ0KIyBSIGRvZXMgbm90IGhhdmUgYSBzdGFuZGFyZCBpbi1idWlsdCBmdW5jdGlvbiB0byBjYWxjdWxhdGUgbW9kZS4NCiMgU28gd2UgY3JlYXRlIGEgdXNlciBmdW5jdGlvbiB0byBjYWxjdWxhdGUgbW9kZSBvZiBhIGRhdGEgc2V0IGluIFIuDQojIFRoaXMgZnVuY3Rpb24gdGFrZXMgdGhlIHZlY3RvciBhcyBpbnB1dCBhbmQgZ2l2ZXMgdGhlIG1vZGUgdmFsdWUgYXMgb3V0cHV0Lg0KIyBDcmVhdGUgdGhlIGZ1bmN0aW9uLg0KZ2V0bW9kZSA8LSBmdW5jdGlvbih4KSB7DQogIHVuaXF2IDwtIHVuaXF1ZSh4KQ0KICB1bmlxdlt3aGljaC5tYXgodGFidWxhdGUobWF0Y2goeCwgdW5pcXYpKSldDQp9DQpnZXRtb2RlKCkNCmBgYA0KDQpNaXN1cmUgZGkgZGlzcGVyc2lvbmU6DQpgYGB7cn0NCnZhcigpDQpzZCgpDQptaW4oKQ0KbWF4KCkNCnJhbmdlKCkNCnF1YW50aWxlKCkNCmBgYA0KDQpBbHRyZToNCmBgYHtyfQ0Kc3VtKCkNCnNhbXBsZSgpDQpgYGANCg0KDQojIEludGVydmFsbGkgZGkgY29uZmlkZW56YQ0KDQpgYGB7cn0NCkNJKCkNCmdyb3VwLkNJKCkNCmJvb3QoKQ0KYm9vdC5jaQ0KDQpjb25maW50KCkNCmNpLnBsb3QoKQ0KYGBgDQoNCg0KDQoNCiMgQW5hbGlzaSBkaSBjb3JyZWxhemlvbmUNCg0KYGBge3J9DQpjb3IoKQ0KY29yLnRlc3QoKQ0KZ2djb3JycGxvdCgpDQoNCnZpZigpICMgYXBwbGljYXRvIGFkIHVuIG1vZGVsbG8gZGkgcmVncmVzc2lvbmUNCmBgYA0KDQoNCiMgVGVzdCBkJ2lwb3Rlc2kNCg0KYGBge3J9DQpzaGFwaXJvLnRlc3QoKQ0KcXFub3JtKCk7cXFsaW5lKCkNCnQudGVzdCgpDQoNCnZhci50ZXN0KCkNCmBgYA0KDQpNb2RlbGxpIGRpIHJlZ3Jlc3Npb25lOg0KYGBge3J9DQpsbSgpDQpzdW1tYXJ5KCkNCmdsbSgpDQoNCnByZWRpY3QoKQ0KcmVsZXZlbCgpDQpib3hjb3goKQ0KcGxvdF9tb2RlbCgpDQpgYGANCg0KQU5PVkE6DQpgYGB7cn0NCmFvdigpDQphbm92YSgpDQpzdW1tYXJ5LmxtKCkNCmBgYA0KDQpDb25mcm9udGkgbXVsdGlwbGk6DQpgYGB7cn0NCnBhaXJ3aXNlLnQudGVzdCgpDQpUdWtleUhTRCgpDQpgYGANCg0KSW50ZXJhemlvbmk6DQpgYGB7cn0NCmludGVyYWN0aW9uLnBsb3QoKQ0KY29wbG90KCkNCmBgYA0KDQoNCiMgQ2hpLXF1YWRybyBlIFN0YXRpc3RpY2Egbm9uIHBhcmFtZXRyaWNhDQoNCmBgYHtyfQ0KY2hpc3EudGVzdCgpDQp3aWxjb3gudGVzdCgpDQoNCm9uZXdheS50ZXN0KCkNCmBgYA0KDQo=</div>
 
 
 
