@@ -7,10 +7,10 @@ head(y) # we can see the first rows of our data frame
 
 # or from an excel file:
 # we need a specific package in this case, and we need to install it:
-# install.packages("xlsx") # the line is commented because you just need to run it once
-library(xlsx)
+# install.packages("readxl") # the line is commented because you just need to run it once
+library(readxl)
 # read in the worksheet named mysheet
-mydata <- read.xlsx("data/database_esercizio.xls", sheetName = "captures")
+mydata <-  read_excel("data/database_esercizio.xls", sheet = "captures")
 class(mydata)
 head(mydata)
 
@@ -30,7 +30,6 @@ w
 # repeat using the data frame loaded from the Excel file
 mydata$weight_g
 class(mydata$weight_g) # why?
-
 
 
 ## ---- Plot the data ----
