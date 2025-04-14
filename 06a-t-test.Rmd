@@ -31,15 +31,15 @@ grouped %>%
 
 
 ```{r data-individual-weights}
-grouped %>% 
-  summarise(count=n(), individual.weight = mean(weight_g, na.rm = TRUE)) -> ind.w
+adults %>% 
+  group_by(animal_id, sex) %>% 
+  dplyr::summarise(count=n(), individual.weight = mean(weight_g, na.rm = TRUE)) -> ind.w
 ind.w
 ```
 
 ```{r, eval=FALSE}
 
 # use this code only if you could not install the dplyr package
-
 captures <- read.csv("data/captures.csv", sep=";")
 adults <- subset(captures, age=="A")
 adults
@@ -142,7 +142,7 @@ We must met 5 assumptions:
 # we use again the summarise dplyr function
 ind.w %>% 
   group_by(sex) %>% 
-  summarise(count=n(), class.weight = mean(individual.weight, na.rm = TRUE))
+  dplyr::summarise(count=n(), class.weight = mean(individual.weight, na.rm = TRUE))
 
 # again, if you could not install dplyr, use the following code
 # tapply(ind.w$individual.weight, ind.w$sex, mean, na.rm = TRUE)
@@ -210,7 +210,7 @@ boxplot(ind.w$individual.weight ~ ind.w$sex)
 # ?t.test
 t.test(w.f, w.m,
        var.equal = TRUE,
-       paired = FALSE, 
+       paired = TRUE, 
        alternative = "two.sided") # greater/less
 ```
 
