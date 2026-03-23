@@ -107,7 +107,7 @@ var(weight)
 ## standard deviation
 sd(weight)
 
-# why we square the differences?
+# why we square thes differences?
 m <- mean(weight)
 w <- c(m+4,m+4,m-4,m-4)
 op <- par(mfrow=c(1,2))
