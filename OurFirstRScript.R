@@ -1,7 +1,7 @@
 ## ---- Data import ----
 
 # using the read.csv function
-y <- read.csv("data/captures.csv",sep=";") 
+y <- read.csv("data/captures.csv",sep=";")
 class(y) # this is a data frame
 head(y) # we can see the first rows of our data frame
 
@@ -39,6 +39,7 @@ class(mydata$weight_g) # why?
 # let's see how it works
 # ??histogram
 # ?hist # this is the simplest way to get help in R! just a question mark!
+hist(y$weight_g)
 hist(y$weight_g, main="", xlab="Animal weight (g)") # with default break
 hist(y$weight_g, breaks=30, main="", xlab="Animal weigth (g)") # we specified a single number giving
 # the number of cells for the histogram
@@ -54,9 +55,10 @@ stripchart(y$weight_g, xlab="Animal weigth (g)", method="stack")
 # boxplot
 boxplot(y$weight_g, ylab="Animal weigth (g)")
 boxplot(y$weight_g ~ I(y$footlength_mm + y$DOY), varwidth=TRUE, ylab="Animal weigth (g)")
-boxplot(y$weight_g ~ y$sex + y$age, ylab="Animal weigth (g)")
+boxplot(y$weight_g ~ y$sex + y$age, ylab="Animal weigth (g)", varwidth = TRUE)
 # exercise (by your own): do the same with the foot lenght
 boxplot(y$footlength_mm, ylab="Foot length (mm)", ylim=c(15,25))
+boxplot(y$footlength_mm, ylab="Foot length (mm)")
 
 ## ---- Central tendency measures ----
 
@@ -64,7 +66,7 @@ boxplot(y$footlength_mm, ylab="Foot length (mm)", ylim=c(15,25))
 weight <- na.omit(y$weight_g)
 # mean
 mean(weight)
-mean(y$weight_g)
+mean(y$weight_g, na.rm = TRUE)
 # median
 median(weight)
 hist(weight)
@@ -107,40 +109,40 @@ var(weight)
 ## standard deviation
 sd(weight)
 
-# why we square thes differences?
-m <- mean(weight)
-w <- c(m+4,m+4,m-4,m-4)
-op <- par(mfrow=c(1,2))
-plot(w, pch=19, col="dark grey", ylim=c(22,40))
-abline(h=mean(w),col="blue")
-for (i in 1:length(w)) {
-  segments(i,w[i],i,mean(w),col="red",lty=2)
-}
-differences <- w-mean(w)
-differences
-# sum the differences from the mean, and divide by the number of elements:
-(sum(differences))/length(differences) # the negatives cancel the positives
-# as the sign of differences seems to be a problem, we try and use absolute values:
-sum(abs(differences))/length(differences) # this is the mean deviation
-# let's try with another vector, same mean but more spread differences
-w1 <- c(m+7,m+1,m-6,m-2)
-plot(w1, pch=19, col="dark grey", ylim=c(22,40))
-abline(h=mean(w1),col="blue")
-for (i in 1:length(w1)) {
-  segments(i,w1[i],i,mean(w1),col="red",lty=2)
-}
-par(op)
-differences.w1 <- w1-mean(w1)
-sum(abs(differences.w1))/length(differences.w1) # this is the mean deviation
-# if we finally square the differences, the standard deviation is bigger when the differences are more spread out
-sqrt(sum(differences^2)/length(differences))
-sqrt(sum(differences.w1^2)/length(differences.w1))
-## using R functions
-var(w)
-var(w1)
-sd(w)
-sd(w1)
-# the results are slightly different because the R functions adopt a correction for finite samples
+# # why we square the differences?
+# m <- mean(weight)
+# w <- c(m+4,m+4,m-4,m-4)
+# op <- par(mfrow=c(1,2))
+# plot(w, pch=19, col="dark grey", ylim=c(22,40))
+# abline(h=mean(w),col="blue")
+# for (i in 1:length(w)) {
+#   segments(i,w[i],i,mean(w),col="red",lty=2)
+# }
+# differences <- w-mean(w)
+# differences
+# # sum the differences from the mean, and divide by the number of elements:
+# (sum(differences))/length(differences) # the negatives cancel the positives
+# # as the sign of differences seems to be a problem, we try and use absolute values:
+# sum(abs(differences))/length(differences) # this is the mean deviation
+# # let's try with another vector, same mean but more spread differences
+# w1 <- c(m+7,m+1,m-6,m-2)
+# plot(w1, pch=19, col="dark grey", ylim=c(22,40))
+# abline(h=mean(w1),col="blue")
+# for (i in 1:length(w1)) {
+#   segments(i,w1[i],i,mean(w1),col="red",lty=2)
+# }
+# par(op)
+# differences.w1 <- w1-mean(w1)
+# sum(abs(differences.w1))/length(differences.w1) # this is the mean deviation
+# # if we finally square the differences, the standard deviation is bigger when the differences are more spread out
+# sqrt(sum(differences^2)/length(differences))
+# sqrt(sum(differences.w1^2)/length(differences.w1))
+# ## using R functions
+# var(w)
+# var(w1)
+# sd(w)
+# sd(w1)
+# # the results are slightly different because the R functions adopt a correction for finite samples
 
 ## standard error
 sd(weight)/sqrt(length(weight))
