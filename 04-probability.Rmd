@@ -68,7 +68,6 @@ sample(1:6, size = 1, replace = TRUE)
 sample(1:6, size = 1, replace = TRUE)
 ```
 
-
 How often do we get the same number if we roll 2 dice?
 
 ```{r}
