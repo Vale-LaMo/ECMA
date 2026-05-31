@@ -130,8 +130,12 @@ max(bctrans$y)
 library(dplyr)
 risultati.bc <- data.frame(bctrans$y, bctrans$x)
 head(risultati.bc)
-
 arrange(risultati.bc, bctrans.y)
+
+trees %>% 
+  mutate(Volume.bc = Volume^0.31) -> trees.bc
+mod.new <- lm(Volume.bc ~ Height + Girth, data = trees.bc)
+summary(mod.new)
 
 ```
 

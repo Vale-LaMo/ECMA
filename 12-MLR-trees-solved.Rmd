@@ -84,7 +84,7 @@ mod <- lm(Volume ~ Girth + Height, data=trees)
 summary(mod)
 # the mean increase in volume when there is a one-unit increase in girth is 4.7
 
-# Volume.tr <- trees$Volume^0.30
+# Volume.tr <- trees$Volume^0.31
 # mod.tr <- lm(Volume.tr ~ Girth + Height, data=trees)
 # summary(mod.tr)
 
@@ -105,8 +105,8 @@ mod.q <- lm(Volume ~ Girth + I(Girth^2) +
             data=trees)
 summary(mod.q)
 # alternative code:
-mod.q <- lm(Volume ~ poly(Girth, 2, raw=TRUE) + poly(Height, 2, raw=TRUE), data=trees)
-summary(mod.q)
+mod.q.poly <- lm(Volume ~ poly(Girth, 2, raw=TRUE) + poly(Height, 2, raw=TRUE), data=trees)
+summary(mod.q.poly)
 
 ```
 
@@ -117,6 +117,7 @@ plot(Volume ~ Girth, data=trees)
 
 mod.q <- lm(Volume ~ Girth + I(Girth^2) + Height , data=trees)
 summary(mod.q)
+AIC(mod.q)
 ```
 
 Perhaps the girth and height of the tree interact to influence its volume: investigate a model including an interaction term for the two explanatory variables.
@@ -140,7 +141,7 @@ plot(trees$Volume ~ trees$Height)
 
 ```{r}
 library(sjPlot)
-# plot_model(mod)
+plot_model(mod)
 ```
 
 ```{r}
@@ -169,6 +170,12 @@ plot_model(mod.int, type = "pred", terms = c("Girth", "Height [60,80]"))
 ```{r}
 # switch moderator
 plot_model(mod.int, type = "pred", terms = c("Height", "Girth"))
+```
+
+```{r}
+mod.poly.int <- lm(Volume ~ poly(Girth, 2, raw=TRUE) * Height, data=trees)
+summary(mod.poly.int)
+plot_model(mod.poly.int)
 ```
 
 

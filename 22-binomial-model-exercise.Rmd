@@ -113,6 +113,9 @@ fm1 <- glm(CattSiNo ~ Incl +  # BEYOND OPTIMAL MODEL
            family=binomial, data=dati.mod.new)
 #, offset=Noccasioni)
 summary(fm1)
+# driver: topografia CattSiNo ~ Incl + Alt + Esp.tr
+# driver: predatori CattSiNo ~ mediana.rocce + sd.rocce
+# driver: disp. trofica CattiSiNo ~ copveg
 
 hist(dati.mod.new$Ncatture)
 fm1.pois <- glm(Ncatture ~ Incl +
@@ -136,7 +139,7 @@ Now, try to reduce the number of variables in the model - different models can b
 
 fm1.noexp <- glm(CattSiNo ~ Incl +
              Alt,
-             #copveg,
+             # copveg,
              # NSpecie +
              # media.rocce +
              #mediana.rocce,

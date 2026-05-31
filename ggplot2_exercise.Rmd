@@ -1,0 +1,94 @@
+---
+title: "Esercizio: Data Visualization con ggplot2"
+subtitle: "Analisi: Snow Vole Captures (Chionomys nivalis)"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(ggplot2)
+library(dplyr)
+# oppure
+library(tidyverse)
+
+# Caricamento dataset
+data <- read.csv("data/captures.csv", sep=";")
+```
+
+## Esercizio: Data Visualization con ggplot2
+
+### Task 1: Weight vs. Foot Length (Scatter Plot)
+Crea uno scatter plot (x = weight_g, y = footlength_mm), colora per `sex` e aggiungi una linea di regressione (senza intervallo di confidenza).
+
+```{r}
+ggplot(data, aes(x = weight_g, y = footlength_mm, color = sex)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal()
+
+# elimino outlier
+data <- data %>% 
+  filter(footlength_mm < 60)
+data <- subset(data, sex %in% c("M", "F"))
+data <- subset(data, !is.na(age))
+ggplot(data, aes(x = weight_g, y = footlength_mm, color = sex)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal()
+```
+*Domanda: Esiste una relazione positiva? Differisce tra maschi e femmine?*
+
+```{r}
+# Scatter plot con una sola retta di regressione globale
+ggplot(data, aes(x = weight_g, y = footlength_mm)) +
+  # Il colore è applicato solo ai punti
+  geom_point(aes(color = sex)) + 
+  # La linea è calcolata su tutti i dati (senza raggruppamento per colore)
+  geom_smooth(method = "lm", se = FALSE, color = "black") + 
+  theme_minimal()
+```
+
+
+---
+
+### Task 2: Weight Distribution (Histogram)
+Crea un istogramma di `weight_g` (binwidth = 2), suddiviso per `session` usando `facet_wrap`.
+
+```{r}
+ggplot(data, aes(x = weight_g)) +
+  geom_histogram(binwidth = 2, fill = "steelblue", color = "white") +
+  facet_wrap(~session, scales = "free_y") +
+  theme_light()
+```
+
+---
+
+### Task 3: Comparing Sex and Age (Boxplot)
+Crea un boxplot (x = age, y = weight_g) riempiendo con `sex`.
+
+```{r}
+ggplot(data, aes(x = age, y = weight_g, fill = sex)) +
+  geom_boxplot() +
+  theme_classic()
+```
+*Domanda: Quale gruppo risulta più pesante? Sono presenti molti outlier?*
+
+---
+
+### Task 4: Customization (Publication-Ready)
+Personalizza uno dei grafici precedenti aggiungendo titoli e etichette chiare.
+
+```{r}
+final_plot <- ggplot(data, aes(x = age, y = weight_g, fill = sex)) +
+  geom_boxplot() +
+  ggtitle("Distribuzione del peso per età e sesso", subtitle = "Dati Chionomys nivalis") +
+  xlab("Classe di età (A=Adulto, G=Giovane)") +
+  ylab("Peso (g)") +
+  theme_minimal()
+
+# Salvataggio
+# ggsave("MyPlot.png", final_plot, width = 8, height = 6)
+
+print(final_plot)
+```
+

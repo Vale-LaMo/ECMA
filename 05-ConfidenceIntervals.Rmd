@@ -102,7 +102,6 @@ Now we can use the bootstrapped data to calculate the CIs, using the `boot.ci` f
 boot.ci(boot.data,
         conf = 0.95)
 ```
-
 The function generates different types of non-parametric confidence intervals. For routine use, it is recommended to use the BCa or percentile methods. The formulae on which the calculations are based can be found in Chapter 5 of Davison and Hinkley (1997). Davison, A.C. and Hinkley, D.V. (1997) Bootstrap Methods and Their Application, Chapter 5. Cambridge University Press.
 
 Do it on your own:

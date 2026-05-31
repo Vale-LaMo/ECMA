@@ -32,11 +32,12 @@ summary(mod)
 ```
 
 ```{r}
-
+anova.yields <- aov(weight ~ group, data = plant.df)
+summary(anova.yields)
 ```
 
 ```{r}
-
+anova(lm(weight ~ group, data = plant.df))
 ```
 
 ```{r}
